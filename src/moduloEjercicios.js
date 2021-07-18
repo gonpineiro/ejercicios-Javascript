@@ -1,38 +1,38 @@
 import basededatos from './basededatos.js';
 
-
 /**
-* Devuelve el promedio de anios de estreno de todas las peliculas de la base de datos.
-*/
+ * Devuelve el promedio de anios de estreno de todas las peliculas de la base de datos.
+ */
 export const promedioAnioEstreno = () => {
-    // Ejemplo de como accedo a datos dentro de la base de datos
-    // console.log(basededatos.peliculas);
-    return [];
+  // Ejemplo de como accedo a datos dentro de la base de datos
+  let pelis = basededatos.peliculas;
+  let sum = pelis.reduce((previous, current) => (current.anio += previous), 0);
+  return sum / pelis.length;
 };
 
 /**
-* Devuelve la lista de peliculas con promedio de critica mayor al numero que llega
-* por parametro.
-* @param {number} promedio
-  */
+ * Devuelve la lista de peliculas con promedio de critica mayor al numero que llega
+ * por parametro.
+ * @param {number} promedio
+ */
 export const pelicuasConCriticaPromedioMayorA = (promedio) => {
-    return [];
+  return [];
 };
 
 /**
-* Devuelve la lista de peliculas de un director
-* @param {string} nombreDirector
-*/
+ * Devuelve la lista de peliculas de un director
+ * @param {string} nombreDirector
+ */
 export const peliculasDeUnDirector = (nombreDirector) => {
-    return [];
+  return [];
 };
 
 /**
-* Devuelve el promdedio de critica segun el id de la pelicula.
-* @param {number} peliculaId
-*/
+ * Devuelve el promdedio de critica segun el id de la pelicula.
+ * @param {number} peliculaId
+ */
 export const promedioDeCriticaBypeliculaId = (peliculaId) => {
-    return [];
+  return [];
 };
 
 /**
@@ -68,9 +68,9 @@ export const promedioDeCriticaBypeliculaId = (peliculaId) => {
     ],
  */
 export const obtenerPeliculasConPuntuacionExcelente = () => {
-    // Ejemplo de como accedo a datos dentro de la base de datos
-    // console.log(basededatos.peliculas);
-    return [];
+  // Ejemplo de como accedo a datos dentro de la base de datos
+  // console.log(basededatos.peliculas);
+  return [];
 };
 
 /**
@@ -121,5 +121,5 @@ export const obtenerPeliculasConPuntuacionExcelente = () => {
  * @param {string} nombrePelicula
  */
 export const expandirInformacionPelicula = (nombrePelicula) => {
-    return {};
+  return {};
 };
