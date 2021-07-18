@@ -1,7 +1,7 @@
 import basededatos from './basededatos.js';
 
 const pelis = basededatos.peliculas;
-const calificaciones = basededatos.calificaciones;
+const calif = basededatos.calificaciones;
 
 /**
  * Devuelve el promedio de anios de estreno de todas las peliculas de la base de datos.
@@ -16,7 +16,49 @@ export const promedioAnioEstreno = () => {
  * @param {number} promedio
  */
 export const pelicuasConCriticaPromedioMayorA = (promedio) => {
-  return [];
+  /* Generamos un arreglo con las sumpatoria de las puntuaciones sin duplicar */
+  const sinDuplicados = calif.reduce((acum, prev) => {
+    if (acum.find((el) => el.pelicula === prev.pelicula)) {
+      return acum.map((elemento) => {
+        if (elemento.pelicula === prev.pelicula) {
+          return {
+            ...elemento,
+            puntuacion: elemento.puntuacion + prev.puntuacion,
+          };
+        }
+
+        return elemento;
+      });
+    }
+
+    return [...acum, prev];
+  }, []);
+
+  /* Calculamos los promedios */
+  let promedios = [];
+  sinDuplicados.forEach((el) => {
+    let countPeli = 0;
+    calif.forEach((ele) => {
+      if (el.pelicula === ele.pelicula) {
+        countPeli++;
+      }
+    });
+    promedios.push({
+      pelicula: el.pelicula,
+      promedio: el.puntuacion / countPeli,
+    });
+  });
+
+  /* Filstramos las seleccionadas segun el promedio */
+  const seleccionadas = promedios.filter((el) => el.promedio > promedio);
+
+  /* Obtenemos el arreglo final de las peliculas */
+  let seleccion = [];
+  seleccionadas.forEach((el) => {
+    seleccion.push(pelis.filter((fil) => fil.id === el.pelicula));
+  });
+
+  return seleccion;
 };
 
 /**

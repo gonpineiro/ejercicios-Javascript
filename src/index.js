@@ -10,8 +10,8 @@ import {
 console.log('------------------------------------------------------');
 console.log('Ejecutando ejercicios de peliculas.');
 
-/* const promedioAnio = promedioAnioEstreno();
-console.log('Promedio de Anios de estreno de toda la base de datos:', promedioAnio); */
+const promedioAnio = promedioAnioEstreno();
+console.log('Promedio de Anios de estreno de toda la base de datos:', promedioAnio);
 
 const pelicuasConCriticaPromedioMayorA5 = pelicuasConCriticaPromedioMayorA(5);
 console.log('Peliculas con criticas promedio mayores a 5:', pelicuasConCriticaPromedioMayorA5);
