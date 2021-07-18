@@ -1,16 +1,13 @@
 import basededatos from './basededatos.js';
 
+const pelis = basededatos.peliculas;
+const calificaciones = basededatos.calificaciones;
+
 /**
  * Devuelve el promedio de anios de estreno de todas las peliculas de la base de datos.
  */
 export const promedioAnioEstreno = () => {
-  // Ejemplo de como accedo a datos dentro de la base de datos
-  const peliculas = basededatos.peliculas;
-  let sum = peliculas.reduce(
-    (previous, current) => (current.anio += previous),
-    0
-  );
-  return sum / pelis.length;
+  return pelis.reduce((prev, curr) => (curr.anio += prev), 0) / pelis.length;
 };
 
 /**

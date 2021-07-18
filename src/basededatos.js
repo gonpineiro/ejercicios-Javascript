@@ -37,7 +37,7 @@ export const database = {
             generos: [1, 2]
         },
         {
-            id: 3,
+            id: 4,
             nombre: 'Indiana Jones y los cazadores del arca perdida',
             anio: 2012,
             direccionSetFilmacion: {
