@@ -16,41 +16,11 @@ export const promedioAnioEstreno = () => {
  * @param {number} promedio
  */
 export const pelicuasConCriticaPromedioMayorA = (promedio) => {
-  /* Generamos un arreglo con las sumpatoria de las puntuaciones sin duplicar */
-  const sinDuplicados = calif.reduce((acum, prev) => {
-    if (acum.find((el) => el.pelicula === prev.pelicula)) {
-      return acum.map((elemento) => {
-        if (elemento.pelicula === prev.pelicula) {
-          return {
-            ...elemento,
-            puntuacion: elemento.puntuacion + prev.puntuacion,
-          };
-        }
-
-        return elemento;
-      });
-    }
-
-    return [...acum, prev];
-  }, []);
-
-  /* Calculamos los promedios */
-  let promedios = [];
-  sinDuplicados.forEach((el) => {
-    let countPeli = 0;
-    calif.forEach((ele) => {
-      if (el.pelicula === ele.pelicula) {
-        countPeli++;
-      }
-    });
-    promedios.push({
-      pelicula: el.pelicula,
-      promedio: el.puntuacion / countPeli,
-    });
-  });
-
+  
   /* Filstramos las seleccionadas segun el promedio */
-  const seleccionadas = promedios.filter((el) => el.promedio > promedio);
+  const seleccionadas = promedioCalificaciones().filter(
+    (el) => el.promedio > promedio
+  );
 
   /* Obtenemos el arreglo final de las peliculas */
   let seleccion = [];
@@ -164,4 +134,43 @@ export const obtenerPeliculasConPuntuacionExcelente = () => {
  */
 export const expandirInformacionPelicula = (nombrePelicula) => {
   return {};
+};
+
+/* Funciones extras generadas para solucionar ciertos problemas */
+
+const promedioCalificaciones = () => {
+  /* Generamos un arreglo con las sumpatoria de las puntuaciones sin duplicar */
+  const sinDuplicados = calif.reduce((acum, prev) => {
+    if (acum.find((el) => el.pelicula === prev.pelicula)) {
+      return acum.map((elemento) => {
+        if (elemento.pelicula === prev.pelicula) {
+          return {
+            ...elemento,
+            puntuacion: elemento.puntuacion + prev.puntuacion,
+          };
+        }
+
+        return elemento;
+      });
+    }
+
+    return [...acum, prev];
+  }, []);
+
+  /* Calculamos los promedios */
+  let promedios = [];
+  sinDuplicados.forEach((el) => {
+    let countPeli = 0;
+    calif.forEach((ele) => {
+      if (el.pelicula === ele.pelicula) {
+        countPeli++;
+      }
+    });
+    promedios.push({
+      pelicula: el.pelicula,
+      promedio: el.puntuacion / countPeli,
+    });
+  });
+
+  return promedios;
 };
