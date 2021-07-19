@@ -3,6 +3,8 @@ import basededatos from './basededatos.js';
 const pelis = basededatos.peliculas;
 const calif = basededatos.calificaciones;
 const direc = basededatos.directores;
+const crit = basededatos.criticos;
+const gen = basededatos.generos;
 
 /**
  * Devuelve el promedio de anios de estreno de todas las peliculas de la base de datos.
@@ -17,13 +19,13 @@ export const promedioAnioEstreno = () => {
  * @param {number} promedio
  */
 export const pelicuasConCriticaPromedioMayorA = (promedio) => {
-  /* Filstramos las seleccionadas segun el promedio */
+  /* Filtramos las seleccionadas segun el promedio */
   const seleccionadas = promedioCalificaciones().filter(
     (el) => el.promedio > promedio
   );
 
   /* Obtenemos el arreglo final de las peliculas */
-  let seleccion = [];
+  const seleccion = [];
   seleccionadas.forEach((el) => {
     seleccion.push(pelis.filter((fil) => fil.id === el.pelicula));
   });
@@ -84,9 +86,16 @@ export const promedioDeCriticaBypeliculaId = (peliculaId) => {
     ],
  */
 export const obtenerPeliculasConPuntuacionExcelente = () => {
-  // Ejemplo de como accedo a datos dentro de la base de datos
-  // console.log(basededatos.peliculas);
-  return [];
+  /* Filtramos las seleccionadas segun la puntuacion >= 9 */
+  const seleccionadas = calif.filter((el) => el.puntuacion >= 9);
+
+  /* Obtenemos el arreglo final de las peliculas */
+  const seleccion = [];
+  seleccionadas.forEach((el) => {
+    seleccion.push(pelis.filter((fil) => fil.id === el.pelicula));
+  });
+
+  return seleccion;
 };
 
 /**
@@ -137,11 +146,18 @@ export const obtenerPeliculasConPuntuacionExcelente = () => {
  * @param {string} nombrePelicula
  */
 export const expandirInformacionPelicula = (nombrePelicula) => {
-  return {};
+  const seleccion = pelis.filter((el) => el.nombre === nombrePelicula)[0];
+  if (!seleccion) return nombrePelicula + ' no existe en la base de datos';
+
+  return {
+    ...seleccion,
+    directores: direc.filter((el) => seleccion.directores.includes(el.id)),
+    generos: gen.filter((el) => seleccion.generos.includes(el.id)),
+    criticas: getCriticas(seleccion),
+  };
 };
 
 /* Funciones extras generadas para solucionar ciertos problemas */
-
 const promedioCalificaciones = () => {
   /* Generamos un arreglo con las sumpatoria de las puntuaciones sin duplicar */
   const sinDuplicados = calif.reduce((acum, prev) => {
@@ -177,4 +193,17 @@ const promedioCalificaciones = () => {
   });
 
   return promedios;
+};
+
+const getCriticas = ({ id }) => {
+  const value = [];
+  calif
+    .filter((fil) => fil.pelicula === id)
+    .forEach((el) => {
+      value.push({
+        critico: crit.filter((critico) => critico.id === el.critico)[0],
+        puntuacion: el.puntuacion,
+      });
+    });
+  return value;
 };
