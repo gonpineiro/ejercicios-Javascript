@@ -19,8 +19,8 @@ console.log('Peliculas con criticas promedio mayores a 5:', pelicuasConCriticaPr
 /* const promedioDeCriticaDeMatrix = promedioDeCriticaBypeliculaId(2);
 console.log('Promedio de criticas de Matrix (id 2):', promedioDeCriticaDeMatrix); */
 
-/* const peliculasDeSpielberg = peliculasDeUnDirector('Steven Spielberg');
-console.log('Peliculas dirigidas por Spielberg:', peliculasDeSpielberg); */
+const peliculasDeSpielberg = peliculasDeUnDirector('Steven Spielberg');
+console.log('Peliculas dirigidas por Spielberg:', peliculasDeSpielberg);
 
 /* const peliculasCriticasExcelentes = obtenerPeliculasConPuntuacionExcelente();
 console.log('Peliculas con criticas excelentes:', peliculasCriticasExcelentes); */
