@@ -16,7 +16,7 @@ export const promedioAnioEstreno = () => {
  * @param {number} promedio
  */
 export const pelicuasConCriticaPromedioMayorA = (promedio) => {
-  
+
   /* Filstramos las seleccionadas segun el promedio */
   const seleccionadas = promedioCalificaciones().filter(
     (el) => el.promedio > promedio
@@ -44,7 +44,10 @@ export const peliculasDeUnDirector = (nombreDirector) => {
  * @param {number} peliculaId
  */
 export const promedioDeCriticaBypeliculaId = (peliculaId) => {
-  return [];
+    const pelicula = promedioCalificaciones().filter(
+      (el) => el.pelicula === peliculaId
+    );
+  return pelicula[0].promedio;
 };
 
 /**

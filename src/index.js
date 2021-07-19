@@ -10,14 +10,14 @@ import {
 console.log('------------------------------------------------------');
 console.log('Ejecutando ejercicios de peliculas.');
 
-const promedioAnio = promedioAnioEstreno();
+/* const promedioAnio = promedioAnioEstreno();
 console.log('Promedio de Anios de estreno de toda la base de datos:', promedioAnio);
 
 const pelicuasConCriticaPromedioMayorA5 = pelicuasConCriticaPromedioMayorA(5);
-console.log('Peliculas con criticas promedio mayores a 5:', pelicuasConCriticaPromedioMayorA5);
+console.log('Peliculas con criticas promedio mayores a 5:', pelicuasConCriticaPromedioMayorA5); */
 
-const promedioDeCriticaDeMatrix = promedioDeCriticaBypeliculaId(2);
-console.log('Promedio de criticas de Matrix (id 2):', promedioDeCriticaDeMatrix);
+/* const promedioDeCriticaDeMatrix = promedioDeCriticaBypeliculaId(2);
+console.log('Promedio de criticas de Matrix (id 2):', promedioDeCriticaDeMatrix); */
 
 /* const peliculasDeSpielberg = peliculasDeUnDirector('Steven Spielberg');
 console.log('Peliculas dirigidas por Spielberg:', peliculasDeSpielberg); */
